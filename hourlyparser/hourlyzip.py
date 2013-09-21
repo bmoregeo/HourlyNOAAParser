@@ -33,7 +33,7 @@ class hourlyzip():
 
         for f in os.listdir(self.temp_path):
             logging.info('Extracting %s' % f)
-            x = XMLtoObservation.XMLtoObservation(os.path.join(hourlyparser.settings.temp_path, f))
+            x = XMLtoObservation.XMLtoObservation(os.path.join(settings.temp_path, f))
             x.parse()
             session.add(x.observation)
 
