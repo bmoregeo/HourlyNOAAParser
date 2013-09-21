@@ -2,6 +2,7 @@ __author__ = 'christopherfricke'
 from sqlalchemy import Column, Integer, String, DateTime, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
+from geoalchemy import Point, GeometryColumn
 
 from hourlyparser import settings
 
@@ -38,8 +39,10 @@ class Observation(Base):
     wind_degrees = Column(String(10))
     wind_mph = Column(Float)
     wind_gust_mph = Column(Float)
+    shape = GeometryColumn(Point(2))
 
-    def __init__(self):
+
+def __init__(self):
         """Constructor"""
         pass
 
