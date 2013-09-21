@@ -19,6 +19,15 @@ class XMLtoObservation():
     def parse(self):
         dom = xml.dom.minidom.parse(self.xml_document)
         root = dom.getElementsByTagName('current_observation')[0]
+
+        try:
+            # Try adding station geometry point
+            point = 'POINT(%s %s)' % (root.getElementsByTagName(settings.shape[0])[0].firstChild.nodeValue,
+                                      root.getElementsByTagName(settings.shape[1])[0].firstChild.nodeValue)
+            setattr(self.observation, 'shape', point)
+        except IndexError:
+            pass
+
         for variable in settings.xml_items:
             try:
                 try:

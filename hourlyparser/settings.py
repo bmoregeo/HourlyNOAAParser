@@ -11,10 +11,10 @@ log = '/Users/christopherfricke/Source/Weather/NOAAHourly/HourlyParser/logs/log.
 
 db_instance = local_settings.db_instance
 
+shape = ('longitude', 'latitude')
+
 xml_items = [
     ('station_id', str),
-    ('latitude', float),
-    ('longitude', float),
     ('location', str),
     ('dewpoint_f', str),
     ('heat_index_f', float),

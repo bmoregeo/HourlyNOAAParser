@@ -16,8 +16,6 @@ class Observation(Base):
 
     reading_id = Column(Integer, primary_key=True)
     station_id = Column(String(10))
-    latitude = Column(Float)
-    longitude = Column(Float)
     location = Column(String(50))
     dewpoint_f = Column(Float)
     heat_index_f = Column(Float)
@@ -41,8 +39,7 @@ class Observation(Base):
     wind_gust_mph = Column(Float)
     shape = GeometryColumn(Point(2))
 
-
-def __init__(self):
+    def __init__(self):
         """Constructor"""
         pass
 
