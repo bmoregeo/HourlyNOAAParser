@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
 import settings
-from models import Observation
+from models.Observation import Observation
 
 
 Base = declarative_base()
@@ -16,7 +16,7 @@ def create():
     engine = create_engine(settings.db_instance, echo=True)
 
     # get a handle on the table object
-    users_table = Observation.Observation.__table__
+    users_table = Observation.__table__
     # get a handle on the metadata
     metadata = Base.metadata
     metadata.create_all(engine)
