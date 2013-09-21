@@ -1,6 +1,9 @@
 __author__ = 'christopherfricke'
 from sqlalchemy import Column, Integer, String, DateTime, Float
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
+
+from hourlyparser import settings
 
 
 Base = declarative_base()
@@ -41,3 +44,20 @@ class Observation(Base):
 
     def __repr__(self):
         return "<User('%s','%s')>" % (self.reading_id, self.observation_time)
+
+
+def create():
+
+    # create a connection to a sqlite database
+    # turn echo on to see the auto-generated SQL
+    engine = create_engine(settings.db_instance, echo=True)
+
+    Base = declarative_base()
+
+    # get a handle on the table object
+    users_table = Observation.__table__
+
+    Base.metadata.create_all(engine)
+
+if __name__ == '__main__':
+    create()
