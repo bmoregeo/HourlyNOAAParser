@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 
 from hourlyparser import settings
 
+engine = create_engine(settings.db_instance, echo=True)
 
 Base = declarative_base()
 
@@ -46,18 +47,6 @@ class Observation(Base):
         return "<User('%s','%s')>" % (self.reading_id, self.observation_time)
 
 
-def create():
+users_table = Observation.__table__
 
-    # create a connection to a sqlite database
-    # turn echo on to see the auto-generated SQL
-    engine = create_engine(settings.db_instance, echo=True)
-
-    Base = declarative_base()
-
-    # get a handle on the table object
-    users_table = Observation.__table__
-
-    Base.metadata.create_all(engine)
-
-if __name__ == '__main__':
-    create()
+Base.metadata.create_all(engine)
