@@ -1,5 +1,9 @@
 __author__ = 'christopherfricke'
 from sqlalchemy import Column, Integer, String, DateTime, Float
+from sqlalchemy.ext.declarative import declarative_base
+
+
+Base = declarative_base()
 
 
 class Observation(Base):
