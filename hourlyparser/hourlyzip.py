@@ -9,7 +9,7 @@ import os
 import logging
 
 #- Local
-import hourlyparser.settings
+import settings
 import XMLtoObservation
 
 class hourlyzip():
